@@ -33,7 +33,7 @@ const CadastrarOs: NextPage = () => {
           </label>
           <label>
             Problema relatado:
-            <input { ...register("problema", { required: true })} />
+            <textarea { ...register("problema", { required: true })} />
           </label>
           <label>
             Id do colaborador:
