@@ -1,7 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import useAuthentication from '../hooks/useAuthentication';
 
 const Home: NextPage = () => {
+  useAuthentication();
+
   return (
     <div>
       <Head>
@@ -17,4 +20,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;

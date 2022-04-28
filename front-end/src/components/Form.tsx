@@ -13,7 +13,7 @@ const Form = (props: Props): JSX.Element => {
   const onSubmit = (event: React.FormEvent<EventTarget>) => {
     event.preventDefault();
     router.push('/');
-    console.log('yes');
+    localStorage.setItem('data', JSON.stringify(data))
   }
 
   const onChange = (event: { target: HTMLInputElement }) => {
