@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Register from '../components/Register';
 import useAuthentication from '../hooks/useAuthentication';
 
 const Home: NextPage = () => {
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-
+        <Register />
       </main>
     </div>
   )
