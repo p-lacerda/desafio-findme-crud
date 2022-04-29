@@ -30,5 +30,6 @@ export default class ClienteController {
 
     const cliente = await Cliente.delete(Number(id));
 
+    res.status(200).json(cliente);
   }
 }
