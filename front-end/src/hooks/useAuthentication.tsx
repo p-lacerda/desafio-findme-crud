@@ -12,6 +12,8 @@ export default async function useAuthentication(): Promise<void> {
 
     const data = getUserFromLocalStorage();
 
+    console.log(data);
+
     useEffect(() => {
       if (Object.keys(data).length === 0) {
         router.push('/login'); 
