@@ -1,15 +1,24 @@
 import { Request, Response } from 'express';
+import { clienteService as Cliente } from '../services';
 
 export default class ClienteController {
-  public static async create(req: Request, res: Response) {
+  public async create(req: Request, res: Response) {
+    const { name } = req.body;
+
+    const cliente = await Cliente.create(name);
+
+    res.status(201).json(cliente);
+  }
+
+  public async getAll(req: Request, res: Response) {
 
   }
 
-  public static async getAll(req: Request, res: Response) {
+  public async update(req: Request, res: Response) {
 
   }
 
-  public static async edit(req: Request, res: Response) {
+  public async delete(req: Request, res: Response) {
 
   }
 }
