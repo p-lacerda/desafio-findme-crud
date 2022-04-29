@@ -10,7 +10,8 @@ export default class ClienteController {
     res.status(201).json(cliente);
   }
 
-  public async getAll(req: Request, res: Response) {
+  public async getAll(_req: Request, res: Response) {
+    const cliente = await Cliente.findAll();
 
   }
 
