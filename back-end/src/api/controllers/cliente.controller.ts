@@ -20,6 +20,9 @@ export default class ClienteController {
     const { id } = req.params;
     const { body } = req;
 
+    const cliente = await Cliente.update(Number(id), body);
+
+    res.status(200).json(cliente);
   }
 
   public async delete(req: Request, res: Response) {
