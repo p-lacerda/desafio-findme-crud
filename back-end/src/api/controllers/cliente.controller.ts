@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { clienteService as Cliente } from '../services';
 
 export default class ClienteController {
   public async create(req: Request, res: Response) {
