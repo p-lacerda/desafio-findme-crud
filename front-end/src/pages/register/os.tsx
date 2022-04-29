@@ -1,7 +1,18 @@
 import type { NextPage } from 'next';
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 
+type Inputs = {
+  data: Date,
+  clienteId: number,
+  problema: string,
+  colaboradorId: number,
+};
+
 const CadastrarOs: NextPage = () => {
+  const { register, handleSubmit } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
   return (
     <div>
       <Head>
@@ -10,6 +21,27 @@ const CadastrarOs: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <p>Cadastrar Ordens de Serviço</p>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label>
+            Data de abertura:
+            <input type="date" { ...register("data", { required: true })} />
+          </label>
+          <label>
+            Id do cliente:
+            <input { ...register("clienteId", { required: true })} />
+          </label>
+          <label>
+            Problema relatado:
+            <textarea { ...register("problema", { required: true })} />
+          </label>
+          <label>
+            Id do colaborador:
+            <input { ...register("colaboradorId", { required: true })} />
+          </label>
+            <button type="submit">Criar</button>
+        </form>
+      </div>
     </div>
   )
 }
