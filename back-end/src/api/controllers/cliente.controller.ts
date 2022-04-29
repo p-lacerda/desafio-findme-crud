@@ -7,6 +7,7 @@ export default class ClienteController {
 
     const cliente = await Cliente.create(name);
 
+    res.status(201).json(cliente);
   }
 
   public async getAll(req: Request, res: Response) {
