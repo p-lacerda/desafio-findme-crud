@@ -17,6 +17,8 @@ export default class ClienteController {
   }
 
   public async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { body } = req;
 
   }
 
