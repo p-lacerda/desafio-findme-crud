@@ -1,5 +1,9 @@
 const { Cliente } = require('../../database/models');
 
+type bodyCliente = {
+  name: string,
+}
+
 export default class ClienteService {
   public async create(name: string) {
 
