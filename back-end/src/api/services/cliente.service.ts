@@ -17,7 +17,8 @@ export default class ClienteService {
 
   public async update(id: number, body: bodyCliente) {
 
-    const cliente = await Cliente.findOne({ where: id });
+    // definir types posteriormente
+    const cliente: null | any = await Cliente.findOne({ where: { id } });
     
     return cliente.update(body);
   }
