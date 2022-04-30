@@ -3,9 +3,9 @@ import { colaboradorService as Colaborador } from '../services';
 
 export default class ColaboradorController {
   public async create(req: Request, res: Response) {
-    const { name } = req.body;
+    const { nome, email, senha } = req.body;
 
-    const colaborador = await Colaborador.create(name);
+    const colaborador = await Colaborador.create({ nome, email, senha });
 
     res.status(201).json(colaborador);
   }
@@ -18,9 +18,9 @@ export default class ColaboradorController {
 
   public async update(req: Request, res: Response) {
     const { id } = req.params;
-    const { body } = req;
+    const { nome, email, senha } = req.body;
 
-    const colaborador = await Colaborador.update(Number(id), body);
+    const colaborador = await Colaborador.update(Number(id), { nome, email, senha });
 
     res.status(200).json(colaborador);
   }

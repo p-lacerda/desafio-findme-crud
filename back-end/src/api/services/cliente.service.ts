@@ -1,13 +1,13 @@
-const { Cliente } = require('../../database/models');
+import Cliente from '../../database/models/cliente.model';
 
 type bodyCliente = {
   name: string,
 }
 
 export default class ClienteService {
-  public async create(name: string) {
+  public async create(nome: string) {
     
-    return Cliente.create(name);
+    return Cliente.create({ nome });
   }
 
   public async findAll() {
@@ -17,14 +17,15 @@ export default class ClienteService {
 
   public async update(id: number, body: bodyCliente) {
 
-    const cliente = await Cliente.findOne({ where: id });
+    // definir types posteriormente
+    const cliente: null | any = await Cliente.findOne({ where: { id } });
     
     return cliente.update(body);
   }
 
   public async delete(id: number) {
 
-    const cliente = await Cliente.destroy({ where: id });
+    const cliente = await Cliente.destroy({ where: { id } });
     
     return cliente;
   }
