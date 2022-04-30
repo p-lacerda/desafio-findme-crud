@@ -11,10 +11,6 @@ class Ordens extends Model {
 
 Ordens.init(
   {
-    //     data: DataTypes.DATE,
-//     clienteId: DataTypes.INTEGER,
-//     problemaRelatado: DataTypes.TEXT,
-//     colaboradorId: DataTypes.INTEGER
     id: {
       allowNull: false,
       autoIncrement: true,
