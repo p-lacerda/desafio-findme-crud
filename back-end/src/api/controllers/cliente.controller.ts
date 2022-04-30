@@ -3,9 +3,9 @@ import { clienteService as Cliente } from '../services';
 
 export default class ClienteController {
   public async create(req: Request, res: Response) {
-    const { name } = req.body;
+    const { nome } = req.body;
 
-    const cliente = await Cliente.create(name);
+    const cliente = await Cliente.create(nome);
 
     res.status(201).json(cliente);
   }
