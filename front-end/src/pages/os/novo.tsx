@@ -6,13 +6,26 @@ import Head from 'next/head';
 type Inputs = {
   data: Date,
   clienteId: number,
-  problema: string,
+  problemaRelatado: string,
   colaboradorId: number,
 };
 
 const CadastrarOs: NextPage = () => {
+  const router = useRouter();
+
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await fetch('http://localhost:3001/ordens', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+
+    router.push('/');
+  };
   return (
     <div>
       <Head>
@@ -33,7 +46,7 @@ const CadastrarOs: NextPage = () => {
           </label>
           <label>
             Problema relatado:
-            <textarea { ...register("problema", { required: true })} />
+            <textarea { ...register("problemaRelatado", { required: true })} />
           </label>
           <label>
             Id do colaborador:
