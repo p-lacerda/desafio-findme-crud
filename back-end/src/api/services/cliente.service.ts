@@ -5,7 +5,7 @@ type bodyCliente = {
 }
 
 export default class ClienteService {
-  public async create(name: string) {
+  public async create(nome: string) {
     
     return Cliente.create(name);
   }
