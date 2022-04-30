@@ -1,15 +1,10 @@
-const { Colaborador } = require('../../database/models');
-
-type bodyColaborador = {
-  name: string,
-  email: string,
-  senha: string
-}
+import Colaborador from '../../database/models/colaborador.model';
+import { ColaboradorBody } from "../interfaces/colaborador.inteface";
 
 export default class ColaboradorService {
-  public async create(name: string) {
+  public async create(body: ColaboradorBody) {
     
-    return Colaborador.create(name);
+    return Colaborador.create({ ...body });
   }
 
   public async findAll() {
@@ -17,17 +12,17 @@ export default class ColaboradorService {
     return Colaborador.findAll();
   }
 
-  public async update(id: number, body: bodyColaborador) {
+  public async update(id: number, body: ColaboradorBody) {
 
-    const cliente = await Colaborador.findOne({ where: id });
+    const colaborador: null | any = await Colaborador.findOne({ where: { id } });
     
-    return cliente.update(body);
+    return colaborador.update({ ...body });
   }
 
   public async delete(id: number) {
 
-    const cliente = await Colaborador.destroy({ where: id });
+    const colaborador = await Colaborador.destroy({ where: { id } });
     
-    return cliente;
+    return colaborador;
   }
 }
