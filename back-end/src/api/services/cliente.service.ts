@@ -7,7 +7,7 @@ type bodyCliente = {
 export default class ClienteService {
   public async create(nome: string) {
     
-    return Cliente.create(name);
+    return Cliente.create({ nome });
   }
 
   public async findAll() {
