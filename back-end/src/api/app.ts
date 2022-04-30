@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { clienteRouter } from './routes';
+import { clienteRouter, colaboradorRouter } from './routes';
 
 class App {
   public app: express.Express;
@@ -22,6 +22,7 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
     this.app.use('/cliente', clienteRouter);
+    this.app.use('/colaborador', colaboradorRouter);
   }
 
 
