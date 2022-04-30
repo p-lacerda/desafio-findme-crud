@@ -25,7 +25,7 @@ export default class ClienteService {
 
   public async delete(id: number) {
 
-    const cliente = await Cliente.destroy({ where: id });
+    const cliente = await Cliente.destroy({ where: { id } });
     
     return cliente;
   }
