@@ -1,4 +1,4 @@
-const { Cliente } = require('../../database/models');
+import Cliente from '../../database/models/cliente.model';
 
 type bodyCliente = {
   name: string,
