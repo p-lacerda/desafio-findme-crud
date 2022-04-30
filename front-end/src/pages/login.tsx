@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import LoginForm from '../components/LoginForm';
 
 const Login: NextPage = () => {

@@ -4,13 +4,23 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Head from 'next/head';
 
 type Inputs = {
-  name: string,
+  nome: string,
 };
 
 const CadastrarCliente: NextPage = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await fetch('http://localhost:3001/cliente', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+
+    router.push('/');
+  };
 
   return (
     <div>
@@ -24,7 +34,7 @@ const CadastrarCliente: NextPage = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
             Nome:
-            <input { ...register("name", { required: true })} />
+            <input { ...register("nome", { required: true })} />
           </label>
           <button type="submit">Criar</button>
         </form>
