@@ -14,10 +14,9 @@ Cliente.init(
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    name: {
+    nome: {
       allowNull: false,
       type: DataTypes.STRING,
-      unique: true,
     },
   },
   {
