@@ -24,10 +24,26 @@ function Colaborador({}: Props) {
         <p>Lista de Colaboradores</p>
         <div>
         {
-          data.map(({ nome, email }, i) => (
+          data.map(({ id, nome, email }, i) => (
             <div key={i}>
               <p>{ nome }</p>
               <p>{ email }</p>
+              <div>
+                <Link passHref href={`/colaborador/editar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Editar
+                  </button>
+                </Link>
+                <Link passHref href={`/colaborador/deletar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Excluir
+                  </button>
+                </Link>
+              </div>
             </div>
           ))
         }

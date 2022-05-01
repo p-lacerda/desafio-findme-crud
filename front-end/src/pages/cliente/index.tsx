@@ -45,7 +45,7 @@ function Cliente({}: Props) {
                   <button
                     className='btn'
                   >
-                    Deletar
+                    Excluir
                   </button>
                 </Link>
               </div>

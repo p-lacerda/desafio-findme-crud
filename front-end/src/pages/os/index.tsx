@@ -25,10 +25,26 @@ function Os({}: Props) {
         <p>Lista de Ordens de Serviço</p>
         <div>
         {
-          data.map(({ dataAbertura, problemaRelatado }, i) => (
+          data.map(({ id, dataAbertura, problemaRelatado }, i) => (
             <div key={i}>
               <p>{ dataAbertura }</p>
               <p>{ problemaRelatado }</p>
+              <div>
+                <Link passHref href={`/os/editar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Editar
+                  </button>
+                </Link>
+                <Link passHref href={`/os/deletar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Excluir
+                  </button>
+                </Link>
+              </div>
             </div>
           ))
         }
