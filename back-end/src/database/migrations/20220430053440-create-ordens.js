@@ -8,17 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      data: {
-        type: Sequelize.DATE
+      dataAbertura: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
+        field: 'data_abertura'
       },
       clienteId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        field: 'cliente_id'
       },
       problemaRelatado: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        field: 'problema_relatado'
       },
       colaboradorId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        field: 'colaborador_id'
       }
     });
   },

@@ -13,15 +13,22 @@ const LoginForm = (props: Props): JSX.Element => {
   const router = useRouter();
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    localStorage.setItem('data', JSON.stringify(data))
+    router.push('/');
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className=""
+    >
       <label htmlFor="email">
         Email
         <input
           id="email"
           {...register("email", { required: true })}
+          className="input input-bordered w-full max-w-xs"
           placeholder="Seu email"
         />
       </label>

@@ -7,15 +7,15 @@ type Props = {}
 function Register({}: Props) {
   return (
     <div>
-      <Link passHref href="/register/cliente">
-        <button>Cadastrar clientes</button>
+      <Link passHref href="/cliente">
+        <button>Área de Clientes</button>
       </Link>
-      <Link passHref href="/register/colaborador">
-      <button>Cadastrar colaboradores</button>
+      <Link passHref href="/colaborador">
+      <button>Área de Colaboradores</button>
 
       </Link>
-      <Link passHref href="/register/os">
-      <button>Cadastrar ordens de serviço</button>
+      <Link passHref href="/os">
+      <button>Área de Ordens de serviço</button>
 
       </Link>
     </div>
