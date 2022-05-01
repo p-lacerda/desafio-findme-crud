@@ -12,6 +12,11 @@ export default class ColaboradorService {
     return Colaborador.findAll();
   }
 
+  public async findById(id: Number) {
+    
+    return Colaborador.findOne({ where: { id } });
+  }
+
   public async update(id: number, body: ColaboradorBody) {
 
     const colaborador: null | any = await Colaborador.findOne({ where: { id } });

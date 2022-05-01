@@ -12,6 +12,11 @@ export default class OrdensService {
     return Ordens.findAll();
   }
 
+  public async findById(id: Number) {
+    
+    return Ordens.findOne({ where: { id } });
+  }
+
   public async update(id: number, body: OrdensBody) {
 
     const ordens: null | any = await Ordens.findOne({ where: { id } });

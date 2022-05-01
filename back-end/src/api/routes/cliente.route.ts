@@ -11,7 +11,7 @@ export default class ClienteRouter {
   }
 
   public routes() {
-    this.router.get('/', clienteController.getAll);
+    this.router.get('/', clienteController.findAll);
     this.router.post('/', [ClienteValidations.nameValidation ,clienteController.create]);
     this.router.patch('/:id', [ClienteValidations.nameValidation, clienteController.update]);
     this.router.delete('/:id', clienteController.delete);

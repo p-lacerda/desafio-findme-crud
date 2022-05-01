@@ -10,8 +10,16 @@ export default class ColaboradorController {
     res.status(201).json(colaborador);
   }
 
-  public async getAll(_req: Request, res: Response) {
+  public async findAll(_req: Request, res: Response) {
     const colaborador = await Colaborador.findAll();
+
+    res.status(200).json(colaborador);
+  }
+
+  public async findById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const colaborador = await Colaborador.findById(Number(id));
 
     res.status(200).json(colaborador);
   }

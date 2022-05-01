@@ -11,15 +11,18 @@ export default class OrdensRouter {
   }
 
   public routes() {
-    this.router.get('/', ordensController.getAll);
+    this.router.get('/', ordensController.findAll);
     this.router.post('/', [
       OrdensValidations.clienteValidation,
       OrdensValidations.colaboradorValidation,
+      OrdensValidations.idExistsValidation,
       ordensController.create
     ]);
     this.router.patch('/:id', [
       OrdensValidations.clienteValidation,
       OrdensValidations.colaboradorValidation,
+      OrdensValidations.idValidation,
+      OrdensValidations.idExistsValidation,
       ordensController.update
     ]);
     this.router.delete('/:id', ordensController.delete);

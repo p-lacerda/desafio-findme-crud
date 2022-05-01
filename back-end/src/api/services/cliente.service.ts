@@ -15,6 +15,12 @@ export default class ClienteService {
     return Cliente.findAll();
   }
 
+  public async findById(id: Number) {
+    
+    return Cliente.findOne({ where: { id } });
+  }
+
+
   public async update(id: number, body: bodyCliente) {
 
     // definir types posteriormente

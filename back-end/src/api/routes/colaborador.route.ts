@@ -11,7 +11,7 @@ export default class ColaboradorRouter {
   }
 
   public routes() {
-    this.router.get('/', colaboradorController.getAll);
+    this.router.get('/', colaboradorController.findAll);
     this.router.post('/', 
     [
       ColaboradorValidations.nameValidation,
@@ -25,6 +25,8 @@ export default class ColaboradorRouter {
         ColaboradorValidations.nameValidation,
         ColaboradorValidations.emailValidation,
         ColaboradorValidations.senhaValidation,
+        ColaboradorValidations.idValidation,
+        ColaboradorValidations.idExistsValidation,
         colaboradorController.update
       ]
       );

@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { colaboradorService as Colaborador } from '../services';
 
 export default class ClienteValidations {
   public static async nameValidation(req: Request, res: Response, next: NextFunction) {
@@ -51,6 +52,28 @@ export default class ClienteValidations {
 
     if (senha.length < 6) {
       return res.status(401).json({ message: 'O campo senha tem menos de 6 caracteres' });
+    }
+
+    next();
+  }
+
+  public static async idValidation(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+
+    if (id === null || id === undefined) {
+      return res.status(401).json({ message: 'O parametro id está vazio' })
+    }
+
+    next();
+  }
+
+  public static async idExistsValidation(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+
+    const colaborador = await Colaborador.findById(Number(id))
+
+    if (Object.keys(colaborador || {}).length === 0) {
+      return res.status(401).json({ message: 'O colaborador não existe' });
     }
 
     next();

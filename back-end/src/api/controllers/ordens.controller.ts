@@ -10,8 +10,17 @@ export default class OrdensController {
     res.status(201).json(ordens);
   }
 
-  public async getAll(_req: Request, res: Response) {
+  public async findAll(_req: Request, res: Response) {
     const ordens = await Ordens.findAll();
+
+    res.status(200).json(ordens);
+  }
+
+
+  public async findById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const ordens = await Ordens.findById(Number(id));
 
     res.status(200).json(ordens);
   }
