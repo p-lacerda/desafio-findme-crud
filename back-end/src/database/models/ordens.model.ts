@@ -32,12 +32,20 @@ Ordens.init(
     colaboradorId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      field: 'colaborador_id'
+      field: 'colaborador_id',
+      references: {
+        model: 'colaboradores',
+        key: 'id',
+      },
     },
     clienteId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      field: 'cliente_id'
+      field: 'cliente_id',
+      references: {
+        model: 'clientes',
+        key: 'id',
+      },
     }
   },
   {

@@ -15,7 +15,11 @@ module.exports = {
       },
       clienteId: {
         type: Sequelize.INTEGER,
-        field: 'cliente_id'
+        field: 'cliente_id',
+        references: {
+          model: 'clientes',
+          key: 'id',
+        },
       },
       problemaRelatado: {
         type: Sequelize.TEXT,
@@ -23,7 +27,11 @@ module.exports = {
       },
       colaboradorId: {
         type: Sequelize.INTEGER,
-        field: 'colaborador_id'
+        field: 'colaborador_id',
+        references: {
+          model: 'colaboradores',
+          key: 'id',
+        },
       }
     });
   },
