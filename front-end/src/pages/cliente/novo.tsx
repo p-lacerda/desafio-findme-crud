@@ -19,7 +19,7 @@ const CadastrarCliente: NextPage = () => {
       body: JSON.stringify(data)
     })
 
-    router.push('/');
+    router.push('/cliente');
   };
 
   return (
