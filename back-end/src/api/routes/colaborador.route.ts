@@ -1,22 +1,33 @@
-import express, { Request, Response } from 'express';
-import { colaboradorController as Colaborador  } from '../controllers';
+import { Router } from 'express';
+import { colaboradorController  } from '../controllers';
+import ColaboradorValidations from '../middlewares/colaborador.middleware';
 
-export const router = express.Router({
-  strict: true
-});
+export default class ColaboradorRouter {
+  public router: Router;
 
-router.post('/', (req: Request, res: Response) => {
-  Colaborador.create(req, res);
-});
+  constructor() {
+    this.router = Router();
+    this.routes();
+  }
 
-router.get('/', (req: Request, res: Response) => {
-  Colaborador.getAll(req, res);
-});
-
-router.patch('/:id', (req: Request, res: Response) => {
-  Colaborador.update(req, res);
-});
-
-router.delete('/:id', (req: Request, res: Response) => {
-  Colaborador.delete(req, res);
-});
+  public routes() {
+    this.router.get('/', colaboradorController.getAll);
+    this.router.post('/', 
+    [
+      ColaboradorValidations.nameValidation,
+      ColaboradorValidations.emailValidation,
+      ColaboradorValidations.senhaValidation,
+      colaboradorController.create
+    ]
+    );
+    this.router.patch('/:id',
+      [
+        ColaboradorValidations.nameValidation,
+        ColaboradorValidations.emailValidation,
+        ColaboradorValidations.senhaValidation,
+        colaboradorController.update
+      ]
+      );
+    this.router.delete('/:id', colaboradorController.delete);
+  }
+}

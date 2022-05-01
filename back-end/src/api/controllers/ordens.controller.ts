@@ -3,9 +3,9 @@ import { ordensService as Ordens } from '../services';
 
 export default class OrdensController {
   public async create(req: Request, res: Response) {
-    const { data, clienteId, problemaRelatado, colaboradorId } = req.body;
+    const { clienteId, problemaRelatado, colaboradorId } = req.body;
 
-    const ordens = await Ordens.create({ data, clienteId, problemaRelatado, colaboradorId });
+    const ordens = await Ordens.create({ clienteId, problemaRelatado, colaboradorId });
 
     res.status(201).json(ordens);
   }
@@ -18,10 +18,10 @@ export default class OrdensController {
 
   public async update(req: Request, res: Response) {
     const { id } = req.params;
-    const { data, clienteId, problemaRelatado, colaboradorId } = req.body;
+    const { clienteId, problemaRelatado, colaboradorId } = req.body;
 
 
-    const ordens = await Ordens.update(Number(id), { data, clienteId, problemaRelatado, colaboradorId });
+    const ordens = await Ordens.update(Number(id), { clienteId, problemaRelatado, colaboradorId });
 
     res.status(200).json(ordens);
   }

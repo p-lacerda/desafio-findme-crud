@@ -1,22 +1,27 @@
-import express, { Request, Response } from 'express';
-import { ordensController as Ordens  } from '../controllers';
+import { Router } from 'express';
+import { ordensController } from '../controllers';
+import OrdensValidations from '../middlewares/ordens.middleware';
 
-export const router = express.Router({
-  strict: true
-});
+export default class OrdensRouter {
+  public router: Router;
 
-router.post('/', (req: Request, res: Response) => {
-  Ordens.create(req, res);
-});
+  constructor() {
+    this.router = Router();
+    this.routes();
+  }
 
-router.get('/', (req: Request, res: Response) => {
-  Ordens.getAll(req, res);
-});
-
-router.patch('/:id', (req: Request, res: Response) => {
-  Ordens.update(req, res);
-});
-
-router.delete('/:id', (req: Request, res: Response) => {
-  Ordens.delete(req, res);
-});
+  public routes() {
+    this.router.get('/', ordensController.getAll);
+    this.router.post('/', [
+      OrdensValidations.clienteValidation,
+      OrdensValidations.colaboradorValidation,
+      ordensController.create
+    ]);
+    this.router.patch('/:id', [
+      OrdensValidations.clienteValidation,
+      OrdensValidations.colaboradorValidation,
+      ordensController.update
+    ]);
+    this.router.delete('/:id', ordensController.delete);
+  }
+}

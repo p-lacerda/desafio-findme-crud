@@ -1,22 +1,19 @@
-import express, { Request, Response } from 'express';
+import { Router } from 'express';
 import { clienteController  } from '../controllers';
+import ClienteValidations from '../middlewares/cliente.middleware';
 
-export const router = express.Router({
-  strict: true
-});
+export default class ClienteRouter {
+  public router: Router;
 
-router.post('/', (req: Request, res: Response) => {
-  clienteController.create(req, res);
-});
+  constructor() {
+    this.router = Router();
+    this.routes();
+  }
 
-router.get('/', (req: Request, res: Response) => {
-  clienteController.getAll(req, res);
-});
-
-router.patch('/:id', (req: Request, res: Response) => {
-  clienteController.update(req, res);
-});
-
-router.delete('/:id', (req: Request, res: Response) => {
-  clienteController.delete(req, res);
-});
+  public routes() {
+    this.router.get('/', clienteController.getAll);
+    this.router.post('/', [ClienteValidations.nameValidation ,clienteController.create]);
+    this.router.patch('/:id', [ClienteValidations.nameValidation, clienteController.update]);
+    this.router.delete('/:id', clienteController.delete);
+  }
+}
