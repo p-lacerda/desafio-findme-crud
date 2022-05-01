@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 type Inputs = {
-  data: Date,
   clienteId: number,
   problemaRelatado: string,
   colaboradorId: number,
@@ -24,7 +23,7 @@ const CadastrarOs: NextPage = () => {
       body: JSON.stringify(data)
     })
 
-    router.push('/');
+    router.push('/os');
   };
   return (
     <div>
@@ -37,15 +36,11 @@ const CadastrarOs: NextPage = () => {
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Data de abertura:
-            <input type="date" { ...register("data", { required: true })} />
-          </label>
-          <label>
             Id do cliente:
             <input { ...register("clienteId", { required: true })} />
           </label>
           <label>
-            Problema relatado:
+            Qual foi o problema relatado?
             <textarea { ...register("problemaRelatado", { required: true })} />
           </label>
           <label>
