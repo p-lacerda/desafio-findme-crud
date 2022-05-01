@@ -10,6 +10,7 @@ function Cliente({}: Props) {
     fetch("http://localhost:3001/cliente")
       .then(res => res.json())
       .then(res => setData(res))
+      .catch(error => console.log(error))
   }, [])
 
   return (

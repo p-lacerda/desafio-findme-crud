@@ -11,7 +11,7 @@ function Os({}: Props) {
     fetch("http://localhost:3001/ordens")
       .then(res => res.json())
       .then(res => setData(res))
-      .then(res => console.log(res))
+      .catch(error => console.log(error))
   }, [])
   return (
     <div>

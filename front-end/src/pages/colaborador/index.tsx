@@ -10,6 +10,7 @@ function Colaborador({}: Props) {
     fetch("http://localhost:3001/colaborador")
       .then(res => res.json())
       .then(res => setData(res))
+      .catch(error => console.log(error))
   }, [])
   return (
     <div>

@@ -19,12 +19,16 @@ const LoginForm = (props: Props): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className=""
+    >
       <label htmlFor="email">
         Email
         <input
           id="email"
           {...register("email", { required: true })}
+          className="input input-bordered w-full max-w-xs"
           placeholder="Seu email"
         />
       </label>
