@@ -1,9 +1,18 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 type Props = {};
 
 function Os({}: Props) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/ordens")
+      .then(res => res.json())
+      .then(res => setData(res))
+      .then(res => console.log(res))
+  }, [])
   return (
     <div>
       <h1>Ordens de Serviço</h1>
@@ -14,6 +23,16 @@ function Os({}: Props) {
       </div>
       <div>
         <p>Lista de Ordens de Serviço</p>
+        <div>
+        {
+          data.map(({ dataAbertura, problemaRelatado }, i) => (
+            <div key={i}>
+              <p>{ dataAbertura }</p>
+              <p>{ problemaRelatado }</p>
+            </div>
+          ))
+        }
+        </div>
       </div>
     </div>
   )
