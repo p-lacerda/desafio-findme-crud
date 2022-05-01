@@ -23,7 +23,7 @@ const CadastrarColaborador: NextPage = () => {
       body: JSON.stringify(data)
     })
 
-    router.push('/');
+    router.push('/colaborador');
   };
   return (
     <div>
