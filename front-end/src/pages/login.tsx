@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 import LoginForm from '../components/LoginForm';
 
 const Login: NextPage = () => {
+  useEffect(() => {
+    localStorage.setItem('data', '{}');
+  }, []);
   return (
     <div>
       <Head>

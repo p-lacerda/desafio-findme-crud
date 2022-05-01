@@ -18,16 +18,25 @@ function Cliente({}: Props) {
       <h1>Cliente</h1>
       <div>
         <Link passHref href="/cliente/novo">
-          <button>Adicionar novo cliente</button>
+          <button className="btn">Adicionar novo cliente</button>
         </Link>
       </div>
       <div>
         <p>Lista de Clientes</p>
         <div>
         {
-          data.map(({ nome }, i) => (
-            <div key={i}>
+          data.map(({ id, nome }, i) => (
+            <div key={i} className="flex flex-row items-center">
+              <div className="avatar placeholder">
+                <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                  <span>{ nome[0] }</span>
+                </div>
+              </div>
               <p>{ nome }</p>
+              <div>
+                <button className='btn'>Editar</button>
+                <button className='btn'>Deletar</button>
+              </div>
             </div>
           ))
         }
