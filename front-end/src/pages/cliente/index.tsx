@@ -34,8 +34,20 @@ function Cliente({}: Props) {
               </div>
               <p>{ nome }</p>
               <div>
-                <button className='btn'>Editar</button>
-                <button className='btn'>Deletar</button>
+                <Link passHref href={`/cliente/editar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Editar
+                  </button>
+                </Link>
+                <Link passHref href={`/cliente/deletar/${id}`}>
+                  <button
+                    className='btn'
+                  >
+                    Deletar
+                  </button>
+                </Link>
               </div>
             </div>
           ))
