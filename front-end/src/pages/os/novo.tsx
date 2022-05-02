@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import OsForm from '../../components/OsForm';
 
 type Inputs = {
   clienteId: number,
@@ -11,8 +12,6 @@ type Inputs = {
 
 const CadastrarOs: NextPage = () => {
   const router = useRouter();
-
-  const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await fetch('http://localhost:3001/ordens', {
@@ -34,21 +33,7 @@ const CadastrarOs: NextPage = () => {
       </Head>
       <p>Cadastrar Ordens de Serviço</p>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Id do cliente:
-            <input { ...register("clienteId", { required: true })} />
-          </label>
-          <label>
-            Qual foi o problema relatado?
-            <textarea { ...register("problemaRelatado", { required: true })} />
-          </label>
-          <label>
-            Id do colaborador:
-            <input { ...register("colaboradorId", { required: true })} />
-          </label>
-            <button type="submit">Criar</button>
-        </form>
+        <OsForm onSubmit={onSubmit} buttonName="Cadastrar" />
       </div>
     </div>
   )

@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import Head from 'next/head';
+import ClienteForm from '../../components/ClienteForm';
 
 type Inputs = {
   nome: string,
@@ -9,7 +10,6 @@ type Inputs = {
 
 const CadastrarCliente: NextPage = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await fetch('http://localhost:3001/cliente', {
       method: 'POST',
@@ -30,15 +30,7 @@ const CadastrarCliente: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <p>Cadastrar clientes</p>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Nome:
-            <input { ...register("nome", { required: true })} />
-          </label>
-          <button type="submit">Criar</button>
-        </form>
-      </div>
+      <ClienteForm onSubmit={onSubmit} buttonName="Cadastrar"/>
     </div>
   )
 }

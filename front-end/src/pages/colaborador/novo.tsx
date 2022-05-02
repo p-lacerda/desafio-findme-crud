@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import ColaboradorForm from '../../components/ColaboradorForm';
 
 type Inputs = {
   nome: string,
@@ -11,8 +12,6 @@ type Inputs = {
 
 const CadastrarColaborador: NextPage = () => {
   const router = useRouter();
-
-  const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await fetch('http://localhost:3001/colaborador', {
@@ -34,21 +33,7 @@ const CadastrarColaborador: NextPage = () => {
       </Head>
       <p>Cadastrar colaboradores</p>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Nome:
-            <input { ...register("nome", { required: true })} />
-          </label>
-          <label>
-            Email:
-            <input { ...register("email", { required: true })} />
-          </label>
-          <label>
-            Senha:
-            <input { ...register("senha", { required: true })} />
-          </label>
-            <button type="submit">Criar</button>
-        </form>
+        <ColaboradorForm onSubmit={onSubmit} buttonName="Cadastrar"/>
       </div>
     </div>
   )

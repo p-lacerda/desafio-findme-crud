@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
+import ClienteForm from '../../../components/ClienteForm';
 
 type Inputs = {
   nome: string,
@@ -11,8 +12,6 @@ type Props = {};
 const EditarCliente = (props: Props) => {
   const router = useRouter();
   const { query } = useRouter();
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await fetch(`http://localhost:3001/cliente/${query.id}`, {
@@ -28,14 +27,7 @@ const EditarCliente = (props: Props) => {
   return (
     <div>
       Editar o cliente
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Nome:
-          <input type="text"  {...register("nome", { required: true })} />
-        </label>
-        <button type="submit">Editar</button>
-      </form>
+      <ClienteForm onSubmit={onSubmit} buttonName="Editar"/>
     </div>
   )
 }

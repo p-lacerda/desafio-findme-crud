@@ -12,6 +12,9 @@ type Inputs = {
 const LoginForm = (props: Props): JSX.Element => {
   const router = useRouter();
 
+const EMAIL_VALIDATION = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = data => {
     localStorage.setItem('data', JSON.stringify(data))
@@ -27,7 +30,10 @@ const LoginForm = (props: Props): JSX.Element => {
         Email
         <input
           id="email"
-          {...register("email", { required: true })}
+          {...register("email", { required: true, pattern: {
+            value: EMAIL_VALIDATION,
+            message: 'O campo email é inválido',
+          }, })}
           className="input input-bordered w-full max-w-xs"
           placeholder="Seu email"
         />
@@ -36,7 +42,7 @@ const LoginForm = (props: Props): JSX.Element => {
         Senha
         <input
           id="password"
-          {...register("password", { required: true })}
+          {...register("password", { required: true, minLength: 6 })}
           type="password"
           placeholder="Sua senha"
         />
