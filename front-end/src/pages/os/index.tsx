@@ -55,19 +55,21 @@ function Os({}: Props): JSX.Element {
         <p>Lista de Ordens de Serviço</p>
         <div>
         {
-          filteredData.map(({ id, dataAbertura, problemaRelatado }, i) => (
+          filteredData.map((ordem, i) => (
             <div key={i}>
-              <p>{ dataAbertura }</p>
-              <p>{ problemaRelatado }</p>
+              <p>{ ordem.dataAbertura }</p>
+              <p>{ ordem.problemaRelatado }</p>
+              <p>{ ordem.colaboradorInfo.nome }</p>
+              <p>{ ordem.clienteInfo.nome }</p>
               <div>
-                <Link passHref href={`/os/editar/${id}`}>
+                <Link passHref href={`/os/editar/${ordem.id}`}>
                   <button
                     className='btn'
                   >
                     Editar
                   </button>
                 </Link>
-                <Link passHref href={`/os/deletar/${id}`}>
+                <Link passHref href={`/os/deletar/${ordem.id}`}>
                   <button
                     className='btn'
                   >

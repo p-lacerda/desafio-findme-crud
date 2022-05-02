@@ -1,12 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
+import Chart from '../components/Chart';
 import Navbar from '../components/Navbar';
 import Register from '../components/Register';
 import useAuthentication from '../hooks/useAuthentication';
 
 const Home: NextPage = () => {
-  useAuthentication();
+  // useAuthentication();
   return (
     <div>
       <Head>
@@ -15,9 +16,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
       <main>
         <h1>PredialX</h1>
+        <Chart />
         <Register />
       </main>
     </div>
