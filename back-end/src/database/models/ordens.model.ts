@@ -1,5 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
+import Cliente from './cliente.model';
+import Colaborador from './colaborador.model';
 
 class Ordens extends Model {
   public id!: number;
@@ -57,5 +59,9 @@ Ordens.init(
     underscored: true,
   },
 );
+
+
+Ordens.belongsTo(Cliente, { foreignKey: 'cliente_id', as: 'clienteInfo' });
+Ordens.belongsTo(Colaborador, { foreignKey: 'colaborador_id', as: 'colaboradorInfo' });
 
 export default Ordens;
