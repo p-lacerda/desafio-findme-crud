@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import ColaboradorForm from '../../components/ColaboradorForm';
@@ -17,10 +17,10 @@ const CadastrarColaborador: NextPage = () => {
     await fetch('http://localhost:3001/colaborador', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    })
+      body: JSON.stringify(data),
+    });
 
     router.push('/colaborador');
   };
@@ -33,10 +33,10 @@ const CadastrarColaborador: NextPage = () => {
       </Head>
       <p>Cadastrar colaboradores</p>
       <div>
-        <ColaboradorForm onSubmit={onSubmit} buttonName="Cadastrar"/>
+        <ColaboradorForm onSubmit={onSubmit} buttonName="Cadastrar" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CadastrarColaborador;

@@ -6,14 +6,13 @@ const DeletarCliente: NextPage = () => {
   const router = useRouter();
   const { query } = useRouter();
 
-
   const deleteItem = async () => {
     await fetch(`http://localhost:3001/cliente/${query.id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-    })
+    });
 
     router.push('/cliente');
   };
@@ -21,12 +20,12 @@ const DeletarCliente: NextPage = () => {
     <div>
       Você deseja deletar o cliente: nomeDoCliente?
 
-      <button onClick={() => deleteItem()}>Sim, desejo excluir</button>
+      <button type="button" onClick={() => { return deleteItem(); }}>Sim, desejo excluir</button>
       <Link passHref href="/cliente">
-        <button>Não, quero cancelar</button>
+        <button type="button">Não, quero cancelar</button>
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export default DeletarCliente;

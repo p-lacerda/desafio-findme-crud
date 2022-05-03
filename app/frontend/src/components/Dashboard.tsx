@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import Filter from '../../components/Filter';
+import Order from './Order';
+import Filter from './Filter';
 
 type Inputs = {
   pesquisa: string,
@@ -10,7 +11,7 @@ type Inputs = {
 
 type Props = {};
 
-const Os: React.FC<Props> = ({}: Props) => {
+const Dashboard: React.FC<Props> = () => {
   const [data, setData] = useState<any[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
@@ -29,8 +30,11 @@ const Os: React.FC<Props> = ({}: Props) => {
       );
     });
 
-    filteredSearch = filteredSearch.filter((ordem) => { return ordem.dataAbertura.includes(formData.filtroData); });
-    setFilteredData(filteredSearch);
+    filteredSearch = filteredSearch.filter((ordem) => {
+      return ordem.dataAbertura.includes(formData.filtroData);
+    });
+
+    return setFilteredData(filteredSearch);
   };
 
   useEffect(() => {
@@ -42,9 +46,10 @@ const Os: React.FC<Props> = ({}: Props) => {
       })
       .catch((error) => { return console.log(error); });
   }, []);
+
   return (
-    <div>
-      <h1>Ordens de Serviço</h1>
+    <div className="py-2">
+      <h1 className="text-3xl font-semibold">Ordens de Serviço</h1>
       <div>
         <Link passHref href="/os/novo">
           <button type="button">Adicionar nova ordem de serviço</button>
@@ -52,12 +57,15 @@ const Os: React.FC<Props> = ({}: Props) => {
       </div>
       <div>
         <Filter onSubmit={onSubmit} />
-        <p>Lista de Ordens de Serviço</p>
-        <div>
-          {
-          filteredData.map((ordem, i) => {
+        <Order />
+        <div className="flex flex-row">
+          <div>
+            <p>Lista de Ordens de Serviço</p>
+
+            {
+          filteredData.map((ordem) => {
             return (
-              <div key={i}>
+              <div key={ordem.id}>
                 <p>{ ordem.dataAbertura }</p>
                 <p>{ ordem.problemaRelatado }</p>
                 <p>{ ordem.colaboradorInfo.nome }</p>
@@ -84,10 +92,11 @@ const Os: React.FC<Props> = ({}: Props) => {
             );
           })
         }
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Os;
+export default Dashboard;

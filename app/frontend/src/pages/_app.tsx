@@ -3,15 +3,15 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  const showHeader = router.pathname === '/login' ? false : true;
+  const showHeader = router.pathname !== '/login';
   return (
-    <>
+    <div className="md:flex md:flex-row">
       { showHeader && <Navbar /> }
       <Component {...pageProps} />
-    </>
+    </div>
   );
-}
+};
 
 export default MyApp;

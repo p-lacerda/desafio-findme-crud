@@ -6,27 +6,26 @@ const DeletarOs: NextPage = () => {
   const router = useRouter();
   const { query } = useRouter();
 
-
   const deleteItem = async () => {
     await fetch(`http://localhost:3001/ordens/${query.id}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-    })
+    });
 
-    router.push('/os');
+    router.push('/');
   };
   return (
     <div>
       Você deseja deletar a ordem de serviço?
 
-      <button onClick={() => deleteItem()}>Sim, desejo excluir</button>
-      <Link passHref href="/os">
-        <button>Não, quero cancelar</button>
+      <button type="button" onClick={() => { return deleteItem(); }}>Sim, desejo excluir</button>
+      <Link passHref href="/">
+        <button type="button">Não, quero cancelar</button>
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export default DeletarOs;

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import OsForm from '../../components/OsForm';
@@ -17,12 +17,12 @@ const CadastrarOs: NextPage = () => {
     await fetch('http://localhost:3001/ordens', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    })
+      body: JSON.stringify(data),
+    });
 
-    router.push('/os');
+    router.push('/');
   };
   return (
     <div>
@@ -36,7 +36,7 @@ const CadastrarOs: NextPage = () => {
         <OsForm onSubmit={onSubmit} buttonName="Cadastrar" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CadastrarOs;

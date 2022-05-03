@@ -9,9 +9,7 @@ type Inputs = {
   colaboradorId: number,
 };
 
-type Props = {};
-
-const EditarOs = (props: Props) => {
+const EditarOs = () => {
   const router = useRouter();
   const { query } = useRouter();
 
@@ -24,7 +22,7 @@ const EditarOs = (props: Props) => {
       body: JSON.stringify(data),
     });
 
-    router.push('/os');
+    router.push('/');
   };
   return (
     <div>

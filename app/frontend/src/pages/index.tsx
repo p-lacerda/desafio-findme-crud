@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Register from '../components/Register';
+import Dashboard from '../components/Dashboard';
 
 const Home: React.FC = () => {
   // useAuthentication();
@@ -13,8 +13,7 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <h1>PredialX</h1>
-        <Register />
+        <Dashboard />
       </main>
     </div>
   );
