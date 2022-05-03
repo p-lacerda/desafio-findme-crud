@@ -48,7 +48,7 @@ const Dashboard: React.FC<Props> = () => {
   }, []);
 
   return (
-    <div className="py-8 w-full">
+    <div className="py-8 px-10 w-full">
       <div className="flex flex-row justify-between">
         <h1 className="text-3xl font-semibold">Ordens de Serviço</h1>
         <Link passHref href="/os/novo">

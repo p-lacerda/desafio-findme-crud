@@ -12,7 +12,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-screen max-w-5xl h-screen">
+      <main className="flex w-screen md:max-w-xl lg:max-w-5xl h-screen">
         <Dashboard />
       </main>
     </div>
