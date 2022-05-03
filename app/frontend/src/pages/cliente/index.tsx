@@ -14,9 +14,9 @@ const Cliente = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Cliente</h1>
-      <div>
+    <div className="flex flex-col w-screen max-w-5xl h-screen px-10 py-6">
+      <div className="flex flex-row justify-between">
+        <h1 className="text-3xl font-semibold">Clientes</h1>
         <Link passHref href="/cliente/novo">
           <button type="button" className="btn">Adicionar novo cliente</button>
         </Link>

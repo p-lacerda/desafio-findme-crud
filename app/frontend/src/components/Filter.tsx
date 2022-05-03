@@ -20,20 +20,20 @@ const Filter: React.FC<Props> = ({ onSubmit }: Props) => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="pesquisa">
+          <label htmlFor="filtro-data">
+            <input
+              id="filtroData"
+              {...register('filtroData')}
+              type="date"
+            />
+          </label>
           <input
             id="pesquisa"
             {...register('pesquisa')}
             placeholder="Pesquise por colaborador ou cliente"
           />
         </label>
-        <label htmlFor="filtro-data">
-          <input
-            id="filtroData"
-            {...register('filtroData')}
-            type="date"
-          />
-        </label>
-        <button type="submit">Filtrar</button>
+        <button className="btn" type="submit">Filtrar</button>
       </form>
     </div>
   );

@@ -11,11 +11,11 @@ const Colaborador = () => {
       .catch((error) => { return console.log(error); });
   }, []);
   return (
-    <div>
-      <h1>Colaborador</h1>
-      <div>
+    <div className="flex flex-col w-screen max-w-5xl h-screen px-10 py-6">
+      <div className="flex flex-row justify-between">
+        <h1 className="text-3xl font-semibold">Colaborador</h1>
         <Link passHref href="/colaborador/novo">
-          <button type="button">Adicionar novo colaborador</button>
+          <button type="button" className="btn">Adicionar novo colaborador</button>
         </Link>
       </div>
       <div>

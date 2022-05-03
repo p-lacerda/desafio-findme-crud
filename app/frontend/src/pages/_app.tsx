@@ -1,16 +1,17 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
+import ProtectedRoutes from '../components/ProtectedRoute';
 import Navbar from '../components/Navbar';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const showHeader = router.pathname !== '/login';
   return (
-    <div className="md:flex md:flex-row">
-      { showHeader && <Navbar /> }
-      <Component {...pageProps} />
-    </div>
+    <ProtectedRoutes router={router}>
+      <div className="md:flex md:flex-row">
+        { showHeader && <Navbar /> }
+        <Component {...pageProps} />
+      </div>
+    </ProtectedRoutes>
   );
 };
 

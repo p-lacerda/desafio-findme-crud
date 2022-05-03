@@ -1,14 +1,17 @@
 // import Link from 'next/link';
 import Link from 'next/link';
 import React from 'react';
+import { FiLogOut } from 'react-icons/fi';
+import { MdSpaceDashboard, MdSupervisedUserCircle, MdAccountCircle } from 'react-icons/md';
+import { RiUserSmileFill } from 'react-icons/ri';
 
 const Navbar = () => {
   return (
     <div>
-      <div className="md:flex flex-col md:flex-row md:min-h-screen w-full">
-        <div className="flex flex-col w-full md:w-64 text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 border-r md:mr-2" x-data="{ open: false }">
-          <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
-            <a href="/" className="text-lg font-semibold text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">PredialX</a>
+      <div className="md:flex flex-col md:flex-row md:min-h-screen w-full sticky">
+        <div className="flex flex-col w-full md:w-64 bg-gray-900 flex-shrink-0 border-r ">
+          <div className="flex-shrink-0 px-8 py-6 flex flex-row items-center justify-between">
+            <a href="/" className="text-3xl font-semilight rounded-lg text-white focus:outline-none focus:shadow-outline">PredialX</a>
             <button type="button" className="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline">
               <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
                 <path x-show="!open" fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -20,30 +23,42 @@ const Navbar = () => {
             <Link
               href="/"
             >
-              <button type="button" className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Dashboard</button>
+              <button type="button" className="px-4 py-2 mt-2 text-md font-semibold  rounded-lg bg-gray-900 hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200  focus:outline-none focus:shadow-outline flex items-center mr-2 gap-2">
+                <MdSpaceDashboard />
+                Dashboard
+              </button>
             </Link>
             <Link
               href="/cliente"
             >
-              <button type="button" className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Clientes</button>
+              <button type="button" className="px-4 py-2 mt-2 text-md font-semibold  rounded-lg bg-gray-900 hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200  focus:outline-none focus:shadow-outline flex items-center mr-2 gap-2">
+                <RiUserSmileFill />
+                Clientes
+              </button>
             </Link>
             <Link
               href="/colaborador"
             >
-              <button type="button" className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Colaboradores</button>
+              <button type="button" className="px-4 py-2 mt-2 text-md font-semibold  rounded-lg bg-gray-900 hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200  focus:outline-none focus:shadow-outline flex items-center mr-2 gap-2">
+                <MdSupervisedUserCircle />
+                Colaboradores
+              </button>
             </Link>
             <a
-              className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-4 py-2 mt-2 text-md font-semibold  rounded-lg bg-gray-900 hover:bg-gray-600 focus:bg-gray-600 focus:text-white hover:text-white text-gray-200  focus:outline-none focus:shadow-outline flex items-center mr-2 gap-2"
               href="/meu-perfil"
             >
+              <MdAccountCircle />
               Minha conta
             </a>
-            <a
-              className="px-4 py-2 mt-2 btn btn-error"
-              href="/login"
+            <button
+              type="button"
+              className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-md text-center flex items-center mr-2 px-4 py-2 mt-4 gap-2 ml-4"
             >
+              <FiLogOut />
               Sair
-            </a>
+            </button>
+
           </nav>
         </div>
       </div>

@@ -17,7 +17,7 @@ const LoginForm: React.FC = () => {
     // watch, formState: { errors }
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('user', JSON.stringify(data));
     router.push('/');
   };
 
