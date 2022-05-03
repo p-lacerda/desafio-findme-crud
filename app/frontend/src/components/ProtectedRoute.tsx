@@ -1,7 +1,7 @@
 // check if you are on the client (browser) or server
 const isBrowser = () => { return typeof window !== 'undefined'; };
 
-const ProtectedRoutes = ({ router, children }) => {
+const ProtectedRoutes = ({ router, children }: any) => {
   // Identify authenticated user
   const isAuthenticated = () => {
     if (isBrowser()) {
