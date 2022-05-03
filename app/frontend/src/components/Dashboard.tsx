@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import Order from './Order';
+// import Order from './Order';
 import Filter from './Filter';
+import Modal from './Modal';
 
 type Inputs = {
   pesquisa: string,
@@ -48,7 +50,7 @@ const Dashboard: React.FC<Props> = () => {
   }, []);
 
   return (
-    <div className="py-8 px-10 w-full">
+    <div className="py-6 px-0 w-full">
       <div className="flex flex-row justify-between">
         <h1 className="text-3xl font-semibold">Ordens de Serviço</h1>
         <Link passHref href="/os/novo">
@@ -56,77 +58,71 @@ const Dashboard: React.FC<Props> = () => {
         </Link>
       </div>
       <div>
-        <Order />
+        {/* <Order /> */}
         <div className="flex flex-col">
-          <div>
-            <p className="text-xl">Lista</p>
-          </div>
           <div className="bg-white w-full">
-            <Filter onSubmit={onSubmit} />
-
-            <div className="overflow-x-auto border-x border-t max-w-none w-full">
-              <table className="table-auto w-full">
+            <div className="flex gap-2 place-content-end mt-4">
+              <Filter onSubmit={onSubmit} />
+            </div>
+            <div>
+              <table className="table-auto w-full mt-4">
                 <thead className="border-b">
                   <tr className="bg-gray-100">
                     <th className="text-left p-4 font-medium">Colaborador</th>
                     <th className="text-left p-4 font-medium">Cliente</th>
                     <th className="text-left p-4 font-medium">Problema relatado</th>
-                    <th className="text-left p-4 font-medium">Ações do Painel</th>
+                    <th className="text-left p-4 font-medium">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b hover:bg-gray-50">
-                    <td className="p-4">
-                      Paulo de Tasso
-                      <p className="font-light text-sm">Id: 1</p>
-                    </td>
-                    <td className="p-4">
-                      João Farias
-                      <p className="font-light text-sm">Id: 1</p>
-                    </td>
-                    <td className="p-4">
-                      <button type="button" className="btn">
-                        Ver detalhes
-                      </button>
-                    </td>
-                    <td className="p-4 gap-2 flex">
-                      <button type="button" className="btn btn-warning font-medium">Editar</button>
-                      <button type="button" className="btn btn-error font-medium">Excluir</button>
-                    </td>
-                  </tr>
+                  {
+                    filteredData.map((ordem) => {
+                      return (
+                        <tr className="border-b hover:bg-gray-50" key={ordem.id}>
+                          <td className="p-4">
+                            { ordem.colaboradorInfo.nome }
+                            <p className="font-light text-xs">
+                              {`Id: ${ordem.colaboradorId}`}
+                            </p>
+                          </td>
+                          <td className="p-4">
+                            { ordem.clienteInfo.nome }
+                            <p className="font-light text-xs">
+                              {`Id: ${ordem.clienteId}`}
+                            </p>
+                          </td>
+                          <td className="p-4">
+                            <label htmlFor={`modal-detalhes-${ordem.id}`} className="btn modal-button">
+                              Ver detalhes
+                            </label>
+                            <Modal modalId={`modal-detalhes-${ordem.id}`} detalhes={ordem.problemaRelatado} />
+                          </td>
+                          <td className="p-4 gap-2 flex">
+                            <Link passHref href={`/os/editar/${ordem.id}`}>
+                              <button
+                                className="btn"
+                                type="button"
+                              >
+                                Editar
+                              </button>
+                            </Link>
+                            <Link passHref href={`/os/deletar/${ordem.id}`}>
+                              <button
+                                className="btn"
+                                type="button"
+                              >
+                                Excluir
+                              </button>
+                            </Link>
+                          </td>
+
+                        </tr>
+                      );
+                    })
+                  }
                 </tbody>
               </table>
             </div>
-            {
-          filteredData.map((ordem) => {
-            return (
-              <div key={ordem.id}>
-                <p>{ ordem.dataAbertura }</p>
-                <p>{ ordem.problemaRelatado }</p>
-                <p>{ ordem.colaboradorInfo.nome }</p>
-                <p>{ ordem.clienteInfo.nome }</p>
-                <div>
-                  <Link passHref href={`/os/editar/${ordem.id}`}>
-                    <button
-                      className="btn"
-                      type="button"
-                    >
-                      Editar
-                    </button>
-                  </Link>
-                  <Link passHref href={`/os/deletar/${ordem.id}`}>
-                    <button
-                      className="btn"
-                      type="button"
-                    >
-                      Excluir
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            );
-          })
-        }
           </div>
         </div>
       </div>

@@ -25,8 +25,10 @@ const EditarOs = () => {
     router.push('/');
   };
   return (
-    <div>
-      Editar a ordem de serviço
+    <div className="py-8 px-10 w-screen max-w-5xl h-screen">
+      <h1 className="text-3xl font-semibold">Editar a ordem de serviço</h1>
+      <p className="text-gray-400">*Ids de cliente e colaborador precisam ser existentes</p>
+
       <div>
         <OsForm onSubmit={onSubmit} buttonName="Editar" />
       </div>

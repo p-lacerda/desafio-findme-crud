@@ -7,7 +7,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const showHeader = router.pathname !== '/login';
   return (
     <ProtectedRoutes router={router}>
-      <div className="md:flex md:flex-row">
+      <div className={`${showHeader ? 'md:flex md:flex-row' : null}`}>
         { showHeader && <Navbar /> }
         <Component {...pageProps} />
       </div>

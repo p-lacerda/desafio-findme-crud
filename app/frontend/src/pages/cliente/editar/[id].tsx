@@ -23,8 +23,8 @@ const EditarCliente = () => {
     router.push('/cliente');
   };
   return (
-    <div>
-      Editar o cliente
+    <div className="py-8 px-10 w-screen max-w-5xl h-screen">
+      <h1 className="text-3xl font-semibold">Editar o cliente</h1>
       <ClienteForm onSubmit={onSubmit} buttonName="Editar" />
     </div>
   );

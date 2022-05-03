@@ -26,31 +26,35 @@ const LoginForm: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
       className=""
     >
-      <label htmlFor="email">
-        Email
-        <input
-          id="email"
-          {...register('email', {
-            required: true,
-            pattern: {
-              value: EMAIL_VALIDATION,
-              message: 'O campo email é inválido',
-            },
-          })}
-          className="input input-bordered w-full max-w-xs"
-          placeholder="Seu email"
-        />
-      </label>
-      <label htmlFor="password">
-        Senha
-        <input
-          id="password"
-          {...register('password', { required: true, minLength: 6 })}
-          type="password"
-          placeholder="Sua senha"
-        />
-      </label>
-      <button type="submit">Login</button>
+      <h1 className="font-bold text-4xl text-center mb-4">PredialX</h1>
+      <div className="bg-gray-100 w-80 h-auto rounded-lg py-10 px-10 flex flex-col items-center gap-4">
+        <label htmlFor="email">
+          Email
+          <input
+            id="email"
+            {...register('email', {
+              required: true,
+              pattern: {
+                value: EMAIL_VALIDATION,
+                message: 'O campo email é inválido',
+              },
+            })}
+            className="input input-bordered w-full max-w-xs"
+            placeholder="seu@email.com"
+          />
+        </label>
+        <label htmlFor="password">
+          Senha
+          <input
+            id="password"
+            {...register('password', { required: true, minLength: 6 })}
+            className="input input-bordered w-full max-w-xs"
+            type="password"
+            placeholder="********"
+          />
+        </label>
+        <button className="btn min-w-full" type="submit">Login</button>
+      </div>
     </form>
   );
 };

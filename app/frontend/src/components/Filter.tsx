@@ -19,21 +19,26 @@ const Filter: React.FC<Props> = ({ onSubmit }: Props) => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="pesquisa">
+        <div className="flex flex-row gap-2">
           <label htmlFor="filtro-data">
             <input
               id="filtroData"
+              placeholder="Selecione uma data"
+              className="input input-bordered w-full max-w-xs"
               {...register('filtroData')}
               type="date"
             />
           </label>
-          <input
-            id="pesquisa"
-            {...register('pesquisa')}
-            placeholder="Pesquise por colaborador ou cliente"
-          />
-        </label>
-        <button className="btn" type="submit">Filtrar</button>
+          <label htmlFor="pesquisa">
+            <input
+              id="pesquisa"
+              className="input input-bordered w-full max-w-xs"
+              {...register('pesquisa')}
+              placeholder="Pesquise por colaborador ou cliente"
+            />
+          </label>
+          <button className="btn" type="submit">Filtrar</button>
+        </div>
       </form>
     </div>
   );

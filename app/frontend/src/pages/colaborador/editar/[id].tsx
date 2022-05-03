@@ -25,8 +25,8 @@ const EditarColaborador = () => {
     router.push('/colaborador');
   };
   return (
-    <div>
-      Editar o colaborador
+    <div className="py-8 px-10 w-screen max-w-5xl h-screen">
+      <h1 className="text-3xl font-semibold">Editar o colaborador</h1>
       <div>
         <ColaboradorForm onSubmit={onSubmit} buttonName="Editar" />
       </div>

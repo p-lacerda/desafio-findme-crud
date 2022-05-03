@@ -19,13 +19,16 @@ const ProtectedRoutes = ({ router, children }: any) => {
   const unprotectedRoutes = [
     '/',
     '/cliente',
-    '/cliente/novo',
-    '/cliente/editar',
+    '/cliente/novo/:id',
+    '/cliente/editar/:id',
+    '/cliente/deletar/:id',
     '/colaborador',
-    '/colaborador/novo',
-    '/colaborador/editar',
+    '/colaborador/novo/:id',
+    '/colaborador/editar/:id',
+    '/colaborador/deletar/:id',
     '/os/novo',
     '/os/editar',
+    '/os/deletar/:id',
   ];
 
   const pathIsProtected = unprotectedRoutes.indexOf(router.pathname) !== -1;

@@ -33,6 +33,8 @@ const CadastrarOs: NextPage = () => {
       </Head>
       <div className="py-8 px-10 w-screen max-w-5xl h-screen">
         <h1 className="text-3xl font-semibold">Cadastrar Ordens de Serviço</h1>
+        <p className="text-gray-400">*Ids de cliente e colaborador precisam ser existentes</p>
+
         <OsForm onSubmit={onSubmit} buttonName="Cadastrar" />
       </div>
     </div>

@@ -17,13 +17,15 @@ const DeletarOs: NextPage = () => {
     router.push('/');
   };
   return (
-    <div>
-      Você deseja deletar a ordem de serviço?
+    <div className="py-8 px-10 w-screen max-w-5xl h-screen">
+      <h1 className="text-3xl font-semibold">Você deseja deletar a ordem de serviço?</h1>
 
-      <button type="button" onClick={() => { return deleteItem(); }}>Sim, desejo excluir</button>
-      <Link passHref href="/">
-        <button type="button">Não, quero cancelar</button>
-      </Link>
+      <div className="mt-4 flex flex-row gap-2">
+        <button type="button" className="btn bg-gray-900" onClick={() => { return deleteItem(); }}>Sim, desejo excluir</button>
+        <Link passHref href="/">
+          <button className="btn btn-error bg-transparent" type="button">Não, quero cancelar</button>
+        </Link>
+      </div>
     </div>
   );
 };
