@@ -11,11 +11,16 @@ Aplicação para gerenciar ordens de serviço, colaboradores e clientes.
 **Servidor:** Node, Express, Typescript, Sequelize, Docker
 
 ## Imagens do projeto
+![login](https://github.com/p-lacerda/desafio-findme-crud/blob/main/docs/login.png)
+![dashboard](https://github.com/p-lacerda/desafio-findme-crud/blob/main/docs/dashboard.png)
 
 
-## Necessário
+## Requisitos para rodar
 
-Para rodar o projeto é preciso ter instalado o Docker e o Docker Compose na versão mais recente para não haver erros na execução do projeto
+- NPM ou YARN
+- Docker
+- Docker Compose (**Versão mais atualizada**)
+
 ## Rodando localmente
 
 Clone o repositório
@@ -43,7 +48,7 @@ Rode o docker-compose
 ```
 
 Espere alguns segundos até os apps
-estarem rodando e acesse
+estarem rodando e acesse no navegador
 
 ```bash
   localhost:3000/
