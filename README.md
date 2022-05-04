@@ -45,7 +45,7 @@ Rode o docker-compose
 ```
 
 Espere alguns segundos até os apps
-estarem rodando e acesse
+estarem rodando e acesse no navegador
 
 ```bash
   localhost:3000/
