@@ -17,7 +17,7 @@ Aplicação para gerenciar ordens de serviço, colaboradores e clientes.
 
 ## Requisitos para rodar
 
-- NPM
+- NPM ou YARN
 - Docker
 - Docker Compose (**Versão mais atualizada**)
 
