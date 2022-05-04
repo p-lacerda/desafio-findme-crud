@@ -11,6 +11,8 @@ Aplicação para gerenciar ordens de serviço, colaboradores e clientes.
 **Servidor:** Node, Express, Typescript, Sequelize, Docker
 
 ## Imagens do projeto
+![login](https://github.com/p-lacerda/desafio-findme-crud/blob/main/docs/login.png)
+![dashboard](https://github.com/p-lacerda/desafio-findme-crud/blob/main/docs/dashboard.png)
 
 
 ## Necessário
