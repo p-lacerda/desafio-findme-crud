@@ -15,9 +15,12 @@ Aplicação para gerenciar ordens de serviço, colaboradores e clientes.
 ![dashboard](https://github.com/p-lacerda/desafio-findme-crud/blob/main/docs/dashboard.png)
 
 
-## Necessário
+## Requisitos para rodar
 
-Para rodar o projeto é preciso ter instalado o Docker e o Docker Compose na versão mais recente para não haver erros na execução do projeto
+- NPM
+- Docker
+- Docker Compose (**Versão mais atualizada**)
+
 ## Rodando localmente
 
 Clone o repositório
