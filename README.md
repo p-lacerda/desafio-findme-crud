@@ -14,7 +14,7 @@ Aplicação para gerenciar ordens de serviço, colaboradores e clientes.
 
 ## Necessário
 
-Para rodar o projeto é preciso ter instalado o Docker e o Docker Compose mais recente.
+Para rodar o projeto é preciso ter instalado o Docker e o Docker Compose na versão mais recente para não haver erros na execução do projeto
 ## Rodando localmente
 
 Clone o repositório
