@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-// import Order from './Order';
+import Order from './Order';
 import Filter from './Filter';
 import Modal from './Modal';
 
@@ -11,13 +11,17 @@ type Inputs = {
   filtroData: string
 };
 
+type OrderBy = {
+  filtroOrdem: string,
+};
+
 type Props = {};
 
 const Dashboard: React.FC<Props> = () => {
   const [data, setData] = useState<any[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
-  const onSubmit: SubmitHandler<Inputs> = (formData) => {
+  const submitFilter: SubmitHandler<Inputs> = (formData) => {
     // Se a pesquisa é vazia o array retorna ao original
     if (formData.pesquisa.length === 0 && formData.filtroData.length === 0) {
       return setFilteredData(data);
@@ -39,6 +43,53 @@ const Dashboard: React.FC<Props> = () => {
     return setFilteredData(filteredSearch);
   };
 
+  const submitOrderBy: SubmitHandler<OrderBy> = async (formData) => {
+    let orderedBySearch = [];
+
+    if (formData.filtroOrdem === null) {
+      return setFilteredData(data);
+    }
+
+    if (formData.filtroOrdem === 'colaboradorCrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return a.colaboradorInfo.nome.localeCompare(b.colaboradorInfo.nome);
+      });
+    }
+
+    if (formData.filtroOrdem === 'colaboradorDecrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return b.colaboradorInfo.nome.localeCompare(a.colaboradorInfo.nome);
+      });
+    }
+
+    if (formData.filtroOrdem === 'clienteCrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return a.clienteInfo.nome.localeCompare(b.clienteInfo.nome);
+      });
+    }
+
+    if (formData.filtroOrdem === 'clienteDecrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return b.clienteInfo.nome.localeCompare(a.clienteInfo.nome);
+      });
+    }
+
+    if (formData.filtroOrdem === 'dataCrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return +new Date(a.dataAbertura) + +new Date(b.dataAbertura);
+      });
+    }
+
+    if (formData.filtroOrdem === 'dataDecrescente') {
+      orderedBySearch = data.sort((a, b) => {
+        return +new Date(b.dataAbertura) - +new Date(a.dataAbertura);
+      });
+    }
+
+    await setFilteredData([]);
+    return setFilteredData(orderedBySearch);
+  };
+
   useEffect(() => {
     fetch('http://localhost:3001/ordens')
       .then((res) => { return res.json(); })
@@ -58,19 +109,21 @@ const Dashboard: React.FC<Props> = () => {
         </Link>
       </div>
       <div>
-        {/* <Order /> */}
+        <Order onSubmit={submitOrderBy} />
         <div className="flex flex-col">
           <div className="bg-white w-full">
             <div className="flex gap-2 place-content-end mt-4">
-              <Filter onSubmit={onSubmit} />
+              <Filter onSubmit={submitFilter} />
             </div>
             <div>
               <table className="table-auto w-full mt-4">
                 <thead className="border-b">
                   <tr className="bg-gray-100">
+                    <th className="text-left p-4 font-medium">Id</th>
                     <th className="text-left p-4 font-medium">Colaborador</th>
                     <th className="text-left p-4 font-medium">Cliente</th>
                     <th className="text-left p-4 font-medium">Problema relatado</th>
+                    <th className="text-left p-4 font-medium">Data de abertura</th>
                     <th className="text-left p-4 font-medium">Ações</th>
                   </tr>
                 </thead>
@@ -79,6 +132,9 @@ const Dashboard: React.FC<Props> = () => {
                     filteredData.map((ordem) => {
                       return (
                         <tr className="border-b hover:bg-gray-50" key={ordem.id}>
+                          <td className="p-4">
+                            { ordem.id }
+                          </td>
                           <td className="p-4">
                             { ordem.colaboradorInfo.nome }
                             <p className="font-light text-xs">
@@ -96,6 +152,9 @@ const Dashboard: React.FC<Props> = () => {
                               Ver detalhes
                             </label>
                             <Modal modalId={`modal-detalhes-${ordem.id}`} detalhes={ordem.problemaRelatado} />
+                          </td>
+                          <td className="p-4">
+                            { ordem.dataAbertura }
                           </td>
                           <td className="p-4 gap-2 flex">
                             <Link passHref href={`/os/editar/${ordem.id}`}>

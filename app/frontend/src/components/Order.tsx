@@ -1,31 +1,43 @@
 import React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-// type Props = {}
+type Inputs = {
+  filtroOrdem: string,
+};
 
-const Order = () => {
+type Props = {
+  onSubmit: SubmitHandler<Inputs>
+};
+
+const Order: React.FC<Props> = ({ onSubmit }: Props) => {
+  const {
+    register, handleSubmit,
+    // watch, formState: { errors },
+  } = useForm<Inputs>();
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           Ordernar por nome do Cliente:
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroOrdem">
+            <input type="radio" value="clienteCrescente" {...register('filtroOrdem')} />
             Crescente
           </label>
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroCliente">
+            <input type="radio" value="clienteDecrescente" {...register('filtroOrdem')} />
             Decrescente
           </label>
         </div>
 
         <div>
           Ordernar por nome do Colaborador:
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroColaborador">
+            <input type="radio" value="colaboradorCrescente" {...register('filtroOrdem')} />
             Crescente
           </label>
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroColaborador">
+            <input type="radio" value="colaboradorDecrescente" {...register('filtroOrdem')} />
 
             Decrescente
           </label>
@@ -33,12 +45,12 @@ const Order = () => {
 
         <div>
           Ordernar por Data:
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroOrdem">
+            <input type="radio" value="dataCrescente" {...register('filtroOrdem')} />
             Mais recente
           </label>
-          <label htmlFor="filtro-ordem">
-            <input type="radio" name="filtro-ordem" />
+          <label htmlFor="filtroOrdem">
+            <input type="radio" value="dataDecrescente" {...register('filtroOrdem')} />
             Mais antigo
           </label>
         </div>
